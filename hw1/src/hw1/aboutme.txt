@@ -1,0 +1,12 @@
+Your name: Steven Luu
+Your student ID: 012097982
+Your major: Computer Science
+Your preferred email address: steven.luu@sjsu.edu
+Check one: [X] Undergraduate, [ ] Graduate, [ ] Open university 
+Repeating the class? [ ] Yes, [X] No
+Place and semester where you took a programming course in Java: SJSU - Fall 2017, Fall 2018
+Course number and grade received: CS 46B (A), CS 146 (B)
+Place and semester where you took a course in data structures: SJSU - Fall 2018
+Course number and grade received: CS 146 (B)
+Time it took you to answer the two questions below:
+Did you ask anyone for help? [ ] Yes, [ ] No

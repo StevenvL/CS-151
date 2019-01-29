@@ -43,3 +43,6 @@ Binding(ALT+COMMAND+R,
 
 !ENTRY org.eclipse.oomph.setup.ui 1 0 2019-01-28 17:59:39.189
 !MESSAGE Setup tasks were performed during startup updating 5 preferences. See '/Applications/Eclipse.app/Contents/Eclipse/configuration/org.eclipse.oomph.setup/setup.log' for details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-01-28 18:02:13.657
+!MESSAGE 
