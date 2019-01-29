@@ -46,3 +46,6 @@ Binding(ALT+COMMAND+R,
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2019-01-28 18:02:13.657
 !MESSAGE 
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2019-01-28 18:23:33.782
+!MESSAGE Server returned lastModified <= 0 for https://raw.github.com/guari/eclipse-ui-theme/master/com.github.eclipseuitheme.themes.updatesite/content.jar
