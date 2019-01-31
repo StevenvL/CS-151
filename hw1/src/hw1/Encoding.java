@@ -3,13 +3,9 @@ package hw1;
 import java.util.*;
 
 public class Encoding {
-	static Set<String> storage;
-	public Encoding() {
-		storage = new TreeSet<>();
-	}
 
 	public static Set<String> morseCodes(int m, int n) {
-		Set<String> result = new TreeSet<>();
+		
 		String dot = ".";
 		String dash = "-";
 		String start = "";
@@ -21,29 +17,30 @@ public class Encoding {
 			start += dash;
 		}
 		
-		permutationHelper(start,"");
-		result = storage;
-		return result;
+		Set<String> storage = new TreeSet<>();
+		permutationHelper(start,"", storage);
+		return  storage;
+	
 	}
 	
-	public static void permutationHelper(String remainder, String soFar) {
+	public static void permutationHelper(String remainder, String soFar, Set<String> collector) {
 		if(remainder.isEmpty()) {
-			storage.add(soFar);
+			collector.add(soFar);
 		}
 		else {
 			for(int i = 0; i<remainder.length(); i++) {
 				String letter = String.valueOf(remainder.charAt(i));
 				String prefix = remainder.substring(0, i  );
 				String suffix = remainder.substring(i+1);
-				permutationHelper(prefix+suffix, soFar + letter);
+				permutationHelper(prefix+suffix, soFar + letter, collector);
 			}
 		}
 	}
 	
 	public static void main (String args[]) {
-		Encoding tester = new Encoding();
-		tester.morseCodes(2, 1);
-		for(String s : storage) {
+		
+		Set<String> result = Encoding.morseCodes(2, 1);
+		for(String s : result) {
 			System.out.println(s);
 		}
 	}
