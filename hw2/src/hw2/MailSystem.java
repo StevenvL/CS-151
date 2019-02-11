@@ -1,3 +1,5 @@
+package hw2;
+
 import java.util.ArrayList;
 
 /**
@@ -12,7 +14,6 @@ public class MailSystem
    public MailSystem(int mailboxCount)
    {
       mailboxes = new ArrayList<>();
-
       // Initialize mail boxes.
 
       for (int i = 0; i < mailboxCount; i++)
@@ -28,13 +29,16 @@ public class MailSystem
       Locate a mailbox.
       @param ext the extension number
       @return the mailbox or null if not found
+ * @throws Exception 
    */
-   public Mailbox findMailbox(String ext)
+   public Mailbox findMailbox(String ext) throws Exception
    {
       int i = Integer.parseInt(ext);
       if (1 <= i && i <= mailboxes.size())
          return  mailboxes.get(i - 1);
-      else return null;
+      else {
+    	  throw new Exception("Invalid entry, please try again.");
+      }
    }
 
    private ArrayList<Mailbox> mailboxes;

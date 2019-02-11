@@ -1,3 +1,5 @@
+package hw2;
+
 import java.util.Scanner;
 
 /**
@@ -48,6 +50,7 @@ public class Telephone
             c.record(input);
       }
    }
+
 
    private Scanner scanner;
 }

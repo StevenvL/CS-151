@@ -1,3 +1,5 @@
+package hw2;
+
 /**
    A mailbox contains messages that can be listed, kept or discarded.
 */

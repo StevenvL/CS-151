@@ -1,3 +1,5 @@
+package hw2;
+
 /**
    Connects a phone to the mail system. The purpose of this
    class is to keep track of the state of a connection, since
@@ -56,6 +58,10 @@ public class Connection
          currentMailbox.addMessage(new Message(currentRecording));
       resetConnection();
    }
+   
+   public int getState() {
+	   return state;
+   }
 
    /**
       Reset the connection to the initial state and prompt
@@ -77,7 +83,12 @@ public class Connection
    {
       if (key.equals("#"))
       {
-         currentMailbox = system.findMailbox(accumulatedKeys);
+         try {
+			currentMailbox = system.findMailbox(accumulatedKeys);
+		} catch (Exception e) {
+			currentMailbox = null;
+			e.getSuppressed();
+		}
          if (currentMailbox != null)
          {
             state = RECORDING;
@@ -198,6 +209,8 @@ public class Connection
          phone.speak(MAILBOX_MENU_TEXT);
       }
    }
+   
+ 
 
    private MailSystem system;
    private Mailbox currentMailbox;
