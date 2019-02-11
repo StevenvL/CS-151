@@ -30,7 +30,7 @@ public class Encoding {
 		else {
 			for(int i = 0; i<remainder.length(); i++) {
 				String letter = String.valueOf(remainder.charAt(i));
-				String prefix = remainder.substring(0, i  );
+				String prefix = remainder.substring(0, i);
 				String suffix = remainder.substring(i+1);
 				permutationHelper(prefix+suffix, soFar + letter, collector);
 			}
@@ -39,7 +39,7 @@ public class Encoding {
 	
 	public static void main (String args[]) {
 		
-		Set<String> result = Encoding.morseCodes(2, 1);
+		Set<String> result = Encoding.morseCodes(2,5);
 		for(String s : result) {
 			System.out.println(s);
 		}
