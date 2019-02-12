@@ -78,9 +78,6 @@ public class Connection
       resetConnection();
    }
   
-   public int getState() {
-	   return state;
-   }
 
    /**
       Reset the connection to the initial state and prompt
@@ -152,21 +149,21 @@ public class Connection
    }
 
 
-   private void enterPasscode(String key) {
-	   if (key.equals("#"))
-	      {
-	         if (currentMailbox.checkPasscode(accumulatedKeys))
-	         {
-	            state = MAILBOX_MENU;
-	            phone.speak(MAILBOX_MENU_TEXT);
-	         }
-	         else
-	            phone.speak("Incorrect passcode. Try again!");
-	         accumulatedKeys = "";
-	      }
-	      else
-	         accumulatedKeys += key;
-	   }
+	/**
+	 	Try to log in the user by entering password.
+	 	@param key the phone key pressed by the user
+	 */
+	private void enterPasscode(String key) {
+		if (key.equals("#")) {
+			if (currentMailbox.checkPasscode(accumulatedKeys)) {
+				state = MAILBOX_MENU;
+				phone.speak(MAILBOX_MENU_TEXT);
+			} else
+				phone.speak("Incorrect passcode. Try again!");
+			accumulatedKeys = "";
+		} else
+			accumulatedKeys += key;
+	}
    
    /**
       Change passcode.
@@ -297,7 +294,7 @@ public class Connection
 		   "Please enter your mailbox number followed by a #.";
    private static final String LOGIN_PASSWORD_TEXT = 
 		   "Please enter your passcode followed by a #.";
-	// TODO Auto-generated method stub
+	
 	
 
 }
