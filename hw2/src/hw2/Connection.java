@@ -44,12 +44,14 @@ public class Connection
       else  if (state == DISCONNECTED) {
           		if(key.equals("1")) {
           			state = CONNECTED;
-          			phone.speak("Please Enter a mailbox number followed by a #.");
+          			phone.speak(CONNECT_TEXT);
           		}
           	else if (key.equals("2")) {
           		state = LOGIN;
-          		phone.speak("Please enter your mailbox followed by a #.");
+          		phone.speak(LOGIN_TEXT);
           	}
+          	else
+          		resetConnection();
         }
         
    }
@@ -98,7 +100,9 @@ public class Connection
    */
    private void connect(String key)
    {
-      if (key.equals("#"))
+	  if (key.equals("*"))
+		  phone.speak(CONNECT_TEXT);
+	  else if (key.equals("#"))
       {
          try {
 			currentMailbox = system.findMailbox(accumulatedKeys);
@@ -125,7 +129,9 @@ public class Connection
    */
    private void login(String key)
    {
-	   if (key.equals("#"))
+	   if (key.equals("*"))
+		   phone.speak(LOGIN_TEXT);
+	   else if (key.equals("#"))
 	      {
 	         try {
 				currentMailbox = system.findMailbox(accumulatedKeys);
@@ -135,7 +141,7 @@ public class Connection
 			}
 	   if(currentMailbox != null) {
 		   state = ENTER_PASSCODE;
-		   phone.speak("Please enter your passcode followed by #.");
+		   phone.speak(LOGIN_PASSWORD_TEXT);
 	   }
        else
           phone.speak("Incorrect mailbox number. Try again!");
@@ -168,7 +174,9 @@ public class Connection
    */
    private void changePasscode(String key)
    {
-      if (key.equals("#"))
+	  if (key.equals("*"))
+		  phone.speak("Enter new passcode followed by the # key");
+	  else if (key.equals("#"))
       {
          currentMailbox.setPasscode(accumulatedKeys);
          state = MAILBOX_MENU;
@@ -283,6 +291,12 @@ public class Connection
          + "Enter 2 to save the current message\n"
          + "Enter 3 to delete the current message\n"
          + "Enter 4 to return to the main menu";
+   private static final String CONNECT_TEXT = 
+		   "Please enter a mailbox number followed by a #.";
+   private static final String LOGIN_TEXT = 
+		   "Please enter your mailbox number followed by a #.";
+   private static final String LOGIN_PASSWORD_TEXT = 
+		   "Please enter your passcode followed by a #.";
 	// TODO Auto-generated method stub
 	
 

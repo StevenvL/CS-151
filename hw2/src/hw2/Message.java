@@ -12,8 +12,9 @@ public class Message
    public Message(String messageText)
    {
 	   if(messageText.charAt(messageText.length()-1) == '#')
-		   text = messageText.substring(0, messageText.length()-2);
-      text = messageText;
+		   text = messageText.substring(0, messageText.length()-1);
+	   else
+		   text = messageText;
    }
 
    /**

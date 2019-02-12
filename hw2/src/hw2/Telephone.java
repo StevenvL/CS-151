@@ -46,7 +46,7 @@ public class Telephone
          else if (input.length() == 1
             && "1234567890#*".contains(input)) {
             c.dial(input);
-            speak(c.getState() + " is the current state updated.");
+            //speak(c.getState() + " is the current state updated.");
          }
          else
             c.record(input);
