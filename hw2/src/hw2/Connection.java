@@ -211,6 +211,8 @@ public class Connection
          state = CHANGE_GREETING;
          phone.speak("Record your greeting, then press the # key");
       }
+      else
+    	  phone.speak(MAILBOX_MENU_TEXT);
    }
 
    /**
@@ -243,6 +245,8 @@ public class Connection
          state = MAILBOX_MENU;
          phone.speak(MAILBOX_MENU_TEXT);
       }
+      else
+    	  phone.speak(MAILBOX_MENU_TEXT);
    }
    
  
