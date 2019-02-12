@@ -44,7 +44,7 @@ public class Telephone
          else if (input.equalsIgnoreCase("Q"))
             more = false;
          else if (input.length() == 1
-            && "1234567890#".contains(input)) {
+            && "1234567890#*".contains(input)) {
             c.dial(input);
             speak(c.getState() + " is the current state updated.");
          }

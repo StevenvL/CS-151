@@ -27,8 +27,10 @@ public class Connection
    {
       if (state == CONNECTED) 
     	  connect(key);
+      else if (state == LOGIN) 
+    	  login(key);
       else if (state == RECORDING)
-         login(key);
+         record(key);
       else if (state == CHANGE_PASSCODE)
          changePasscode(key);
       else if (state == CHANGE_GREETING)
@@ -45,7 +47,7 @@ public class Connection
           			phone.speak("Please Enter a mailbox number followed by a #.");
           		}
           	else if (key.equals("2")) {
-          		state = RECORDING;
+          		state = LOGIN;
           		phone.speak("Please enter your mailbox followed by a #.");
           	}
         }
@@ -60,6 +62,8 @@ public class Connection
    {
       if (state == RECORDING || state == CHANGE_GREETING)
          currentRecording += voice;
+      else if (voice.equalsIgnoreCase("H"))
+    	  hangup();
    }
 
    /**
@@ -245,8 +249,8 @@ public class Connection
          state = MAILBOX_MENU;
          phone.speak(MAILBOX_MENU_TEXT);
       }
-      else
-    	  phone.speak(MAILBOX_MENU_TEXT);
+      else 
+    	  phone.speak(MESSAGE_MENU_TEXT);
    }
    
  
@@ -266,6 +270,7 @@ public class Connection
    private static final int CHANGE_PASSCODE = 5;
    private static final int CHANGE_GREETING = 6;
    private static final int ENTER_PASSCODE = 7;
+   private static final int LOGIN = 8;
    
    private static final String INITIAL_PROMPT = 
 		   "To leave a message, press (1), to access your mailbox, press (2)";      
