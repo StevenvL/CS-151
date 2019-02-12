@@ -25,8 +25,8 @@ public class Connection
    */
    public void dial(String key)
    {
-      if (state == CONNECTED)
-         connect(key);
+      if (state == CONNECTED) 
+    	  connect(key);
       else if (state == RECORDING)
          login(key);
       else if (state == CHANGE_PASSCODE)
@@ -37,6 +37,19 @@ public class Connection
          mailboxMenu(key);
       else if (state == MESSAGE_MENU)
          messageMenu(key);
+      else if (state == ENTER_PASSCODE)
+    	  enterPasscode(key);
+      else  if (state == DISCONNECTED) {
+          		if(key.equals("1")) {
+          			state = CONNECTED;
+          			phone.speak("Please Enter a mailbox number followed by a #.");
+          		}
+          	else if (key.equals("2")) {
+          		state = RECORDING;
+          		phone.speak("Please enter your mailbox followed by a #.");
+          	}
+        }
+        
    }
 
    /**
@@ -58,7 +71,7 @@ public class Connection
          currentMailbox.addMessage(new Message(currentRecording));
       resetConnection();
    }
-   
+  
    public int getState() {
 	   return state;
    }
@@ -71,7 +84,7 @@ public class Connection
    {
       currentRecording = "";
       accumulatedKeys = "";
-      state = CONNECTED;
+      state = DISCONNECTED;
       phone.speak(INITIAL_PROMPT);
    }
 
@@ -108,21 +121,43 @@ public class Connection
    */
    private void login(String key)
    {
-      if (key.equals("#"))
-      {
-         if (currentMailbox.checkPasscode(accumulatedKeys))
-         {
-            state = MAILBOX_MENU;
-            phone.speak(MAILBOX_MENU_TEXT);
-         }
-         else
-            phone.speak("Incorrect passcode. Try again!");
-         accumulatedKeys = "";
-      }
-      else
-         accumulatedKeys += key;
+	   if (key.equals("#"))
+	      {
+	         try {
+				currentMailbox = system.findMailbox(accumulatedKeys);
+			} catch (Exception e) {
+				currentMailbox = null;
+				e.getSuppressed();
+			}
+	   if(currentMailbox != null) {
+		   state = ENTER_PASSCODE;
+		   phone.speak("Please enter your passcode followed by #.");
+	   }
+       else
+          phone.speak("Incorrect mailbox number. Try again!");
+       accumulatedKeys = "";
+    }
+    else
+       accumulatedKeys += key;
    }
 
+
+   private void enterPasscode(String key) {
+	   if (key.equals("#"))
+	      {
+	         if (currentMailbox.checkPasscode(accumulatedKeys))
+	         {
+	            state = MAILBOX_MENU;
+	            phone.speak(MAILBOX_MENU_TEXT);
+	         }
+	         else
+	            phone.speak("Incorrect passcode. Try again!");
+	         accumulatedKeys = "";
+	      }
+	      else
+	         accumulatedKeys += key;
+	   }
+   
    /**
       Change passcode.
       @param key the phone key pressed by the user
@@ -226,9 +261,10 @@ public class Connection
    private static final int MESSAGE_MENU = 4;
    private static final int CHANGE_PASSCODE = 5;
    private static final int CHANGE_GREETING = 6;
-
+   private static final int ENTER_PASSCODE = 7;
+   
    private static final String INITIAL_PROMPT = 
-         "Enter mailbox number followed by #";      
+		   "To leave a message, press (1), to access your mailbox, press (2)";      
    private static final String MAILBOX_MENU_TEXT = 
          "Enter 1 to listen to your messages\n"
          + "Enter 2 to change your passcode\n"
@@ -238,4 +274,7 @@ public class Connection
          + "Enter 2 to save the current message\n"
          + "Enter 3 to delete the current message\n"
          + "Enter 4 to return to the main menu";
+	// TODO Auto-generated method stub
+	
+
 }
