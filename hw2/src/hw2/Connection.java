@@ -50,8 +50,10 @@ public class Connection
           		state = LOGIN;
           		phone.speak(LOGIN_TEXT);
           	}
-          	else
+          	else {
+          		phone.speak("Invalid Entry, Please Try Again.");
           		resetConnection();
+          	}
         }
         
    }
