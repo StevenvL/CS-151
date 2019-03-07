@@ -1,11 +1,11 @@
-package hw3;
+
 
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
 /**
-   An icon that contains a moveable shape.
+   An icon that contains an arraylist of moveable objects.
 */
 public class ShapeIcon implements Icon
 {
