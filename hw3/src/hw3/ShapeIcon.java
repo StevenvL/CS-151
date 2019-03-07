@@ -9,10 +9,8 @@ import javax.swing.*;
 */
 public class ShapeIcon implements Icon
 {
-   public ShapeIcon(MoveableShape shape,
-      int width, int height)
+   public ShapeIcon(int width, int height)
    {
-      this.shape = shape;
       this.width = width;
       this.height = height;
    }
@@ -30,17 +28,22 @@ public class ShapeIcon implements Icon
    public void paintIcon(Component c, Graphics g, int x, int y)
    {
       Graphics2D g2 = (Graphics2D) g;
-      shape.draw(g2);
+      for(int i = 0; i < carGarage.size(); i++) {
+    	  carGarage.get(i).draw(g2);
+      }
    }
    
-   public void addCar(Shape addMe) {
+   public void addCar(CarShape addMe) {
 	   carGarage.add(addMe);
+   }
+   
+   public ArrayList<CarShape> getGarage() {
+	   return carGarage;
    }
 
    private int width;
    private int height;
-   private MoveableShape shape;
-   private ArrayList<Shape> carGarage = new ArrayList<>();
+   private ArrayList<CarShape> carGarage = new ArrayList<>();
 }
 
 

@@ -15,16 +15,18 @@ public class CarShape implements MoveableShape
       @param y the top of the bounding rectangle
       @param width the width of the bounding rectangle
    */
-   public CarShape(int x, int y, int width)
+   public CarShape(int x, int y, int width, int moveSpeed)
    {
       this.x = x;
       this.y = y;
       this.width = width;
+      this.moveSpeed = moveSpeed;
+      
    }
 
    public void move()
    {
-      x++;
+      x += moveSpeed;
    }
 
    public void draw(Graphics2D g2)
@@ -77,4 +79,5 @@ public class CarShape implements MoveableShape
    private int x;
    private int y;
    private int width;
+   private int moveSpeed;
 }

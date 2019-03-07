@@ -1,6 +1,7 @@
 package hw3;
 
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,18 +11,15 @@ import javax.swing.Timer;
 public class Question3 {
 	public static void main (String args[]) {
 		      JFrame frame = new JFrame();
-		      CarShape carGarage[] = new CarShape[3];
+		      ShapeIcon icon = new ShapeIcon(ICON_WIDTH, ICON_HEIGHT);
 		      
-		     // final CarShape shape
-		        //    = new CarShape(0, 0, CAR_WIDTH);
-		      
-		      for(int i = 0; i<carGarage.length-1; i++) {
-		    	  carGarage[i] = new CarShape(0,CAR_WIDTH*i, CAR_WIDTH);
+		      for(int i = 0; i < 100; i++) {
+		    	  icon.addCar(new CarShape(0,i*CAR_WIDTH, CAR_WIDTH, i+1));
+		    	  
 		      }
+	
+		     ArrayList<CarShape> garage = icon.getGarage();
 		      
-		      
-		      ShapeIcon icon = new ShapeIcon(carGarage[0],
-		            ICON_WIDTH, ICON_HEIGHT);
 
 		      final JLabel label = new JLabel(icon);
 		      frame.setLayout(new FlowLayout());
@@ -35,18 +33,20 @@ public class Question3 {
 		      // Milliseconds between timer ticks
 		      Timer t = new Timer(DELAY, event ->
 		      {
-		    	  if(carGarage[0].getXPos() == ICON_WIDTH) {
-		    		  carGarage[0].setX(0);
+		    	  for(int i = 0; i < garage.size(); i++) {
+		    	  if(garage.get(i).getXPos() > ICON_WIDTH) {
+		    		  garage.get(i).setX(0);
 		    	  }
 		            else
-		            	carGarage[0].move();
+		            	garage.get(i).move();
 		            	label.repaint();
+		    	  }
 		         });
 		      t.start();
 		   }
 		   
 
 		   private static final int ICON_WIDTH = 500;
-		   private static final int ICON_HEIGHT = 200;
-		   private static final int CAR_WIDTH = 200;
-		}
+		   private static final int ICON_HEIGHT = 1000;
+		   private static final int CAR_WIDTH = 20;
+ 		}
