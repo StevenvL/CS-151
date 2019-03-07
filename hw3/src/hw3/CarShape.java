@@ -14,6 +14,7 @@ public class CarShape implements MoveableShape
       @param x the left of the bounding rectangle
       @param y the top of the bounding rectangle
       @param width the width of the bounding rectangle
+      @param moveSpeed is how many pixels the car moves per timer delay
    */
    public CarShape(int x, int y, int width, int moveSpeed)
    {

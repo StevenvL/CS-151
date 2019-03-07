@@ -1,4 +1,4 @@
-package hw3;
+
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -10,11 +10,11 @@ import javax.swing.Timer;
 
 public class Question3 {
 	public static void main (String args[]) {
-		      JFrame frame = new JFrame();
-		      ShapeIcon icon = new ShapeIcon(ICON_WIDTH, ICON_HEIGHT);
+		      JFrame frame = new JFrame("Freeway Simulator");
+		      ShapeIcon icon = new ShapeIcon(ICON_WIDTH, ICON_HEIGHT);	//Creates an icon that will hold all the cars.
 		      
-		      for(int i = 0; i < 100; i++) {
-		    	  icon.addCar(new CarShape(0,i*CAR_WIDTH, CAR_WIDTH, i+1));
+		      for(int i = 0; i < 50; i++) {	//Adds 50 cars to icon which is store in an arraylist called garage.
+		    	  icon.addCar(new CarShape(0,i*CAR_WIDTH, CAR_WIDTH, i+1)); //Each car moves at varying speeds.
 		    	  
 		      }
 	
@@ -46,7 +46,7 @@ public class Question3 {
 		   }
 		   
 
-		   private static final int ICON_WIDTH = 500;
-		   private static final int ICON_HEIGHT = 1000;
+		   private static final int ICON_WIDTH = 1000;
+		   private static final int ICON_HEIGHT = 1600;
 		   private static final int CAR_WIDTH = 20;
  		}

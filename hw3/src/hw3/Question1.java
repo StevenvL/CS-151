@@ -1,4 +1,4 @@
-package hw3;
+
 
 
 import java.awt.*;
@@ -11,6 +11,8 @@ public class Question1 {
 		Circle circle = new Circle(250,250);
 		JLabel label = new JLabel(circle);
 		
+		
+		//Create a button for each color and when pressed the color will be change and the circle repainted.
 		JButton redButton = new JButton();
 		redButton.setText("Red");
 		redButton.addActionListener(event ->  {
