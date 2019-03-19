@@ -56,8 +56,9 @@ public class Question1 {
 		Rectangle largestRectangle = (Rectangle) maximum(rectList, rectMeasurer);
 		int largestPos = maximumPos(rectList,rectMeasurer);
 		
-		String largest = "Largest rectangle is at position " + largestPos + " with " + largestRectangle.getWidth() + " width and "
-																+ largestRectangle.getHeight() + " height";
+		String largest = "Largest rectangle is at position " + largestPos + " with " 
+											+ largestRectangle.getWidth() + " width and " 
+											+ largestRectangle.getHeight() + " height";
 		System.out.println(largest);
 		}
 	
