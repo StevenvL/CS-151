@@ -107,7 +107,7 @@ public class Question2 {
 		frame1.pack();
 		frame1.setVisible(true);
 		
-		
+		frame2.setLocationRelativeTo(frame1);
 		frame2.add(label);
 		frame2.setPreferredSize(preferedSize);
 		frame2.setLayout(new FlowLayout());
