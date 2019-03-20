@@ -4,17 +4,17 @@ public interface Measurer {
 	double measure(Object x);
 	
 	/**
-	 * @param objectList is an arrayList containing rectangles
-	 * @param m is the Measurer being passed in so that it knows to calculate the area of a rectangle
-	 * @return the largest Rectangle Object in the list
+	 * @param objectList is an arrayList containing Objects
+	 * @param m is the Measurer being passed in so that it knows how to calculate the specific Object area
+	 * @return the largest Object in the list
 	 */
 	public static Object maximum(ArrayList<Object> objectList, Measurer m) {
 		Object largest = objectList.get(0);
 		double largestSize = m.measure(largest);
 		
-		for(Object rect : objectList) {
-			if(m.measure(rect) > largestSize) {
-				largest = rect;
+		for(Object obj : objectList) {
+			if(m.measure(obj) > largestSize) {
+				largest = obj;
 				largestSize = m.measure(largest);
 			}
 		}
@@ -24,9 +24,9 @@ public interface Measurer {
 	
 	
 	/**
-	 * @param objectList is an arrayList containing rectangles
-	 * @param m is the Measurer being passed in so that it knows to calculate the area of a rectangle
-	 * @return the position of the largest Rectangle Object in the list.
+	 * @param objectList is an arrayList containing Object
+	 * @param m is the Measurer being passed in so that it knows how to calculate the specific Object area
+	 * @return the position of the largest Object in the list.
 	 */
 	public static int maximumPos(ArrayList<Object> objectList, Measurer m) {
 		Object largest = objectList.get(0);

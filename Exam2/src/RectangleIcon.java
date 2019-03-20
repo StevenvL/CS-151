@@ -1,7 +1,6 @@
 
 
 import java.awt.*;
-import java.awt.geom.*;
 import java.util.ArrayList;
 
 import javax.swing.Icon;
@@ -31,7 +30,7 @@ public class RectangleIcon implements Icon{
 			 g2.setColor(Color.BLACK);
 			 g2.drawString(String.valueOf(rectList.get(i).getHeight())
 					 , (int)rectList.get(i).getX(), 
-					 (int)rectList.get(i).getMinY());
+					 (int)rectList.get(i).getMinY()-10);
 			 
 		 }
 	}
@@ -53,7 +52,7 @@ public class RectangleIcon implements Icon{
 
 	public void setHeight(String s, int pos) {
 		int heightSize = Integer.parseInt(s);
-		int width = 30;
+		int width = 27;
 		Dimension sizeOf = new Dimension(width,heightSize);
 		rectList.get(pos).setSize(sizeOf);
 	}
