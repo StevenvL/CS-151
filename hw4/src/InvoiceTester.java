@@ -12,17 +12,22 @@ public class InvoiceTester
    {
       final Invoice invoice = new Invoice();
       final InvoiceFormatter formatter = new SimpleFormatter();
-      final InvoiceFormatter HTMLFormatter = new HTMLFormatter();
+      final InvoiceFormatter HTMLFormatter = new HTMLFormatter();	//HTMLFormatter to be passed in so that it will print differntly.
  
+      //Just testing some HTML here so it looks pretty.
       String title = "<html><body style='width: 200px; padding: 5px;'>"
-              + "<h1>Steven Luu, Homework 4</h1>"
-              + "Here is my basic attempt at HTML";
-      
+              + "<h1>Welcome to the Hammer and Nail</h1>"
+    		  + "We sell hammers, nails,<br> and hammer and nails.";
+    		  
+             
+      //Setting up the titleLabel which will be at the top of the frame.
       JLabel titleLabel = new JLabel();
-	  Dimension preferredSizeForTitle = new Dimension(200, 100);
+	  Dimension preferredSizeForTitle = new Dimension(200, 120);
 	  titleLabel.setPreferredSize(preferredSizeForTitle);
 	  titleLabel.setText(title);
 	  
+	  //Setting up the invoiceLabel which will be at the center of the frame.
+	  //This will contain the title, items, and total.
 	  JLabel invoiceLabel = new JLabel();
 	  Dimension preferredSize = new Dimension (200,300);
 	  invoiceLabel.setPreferredSize(preferredSize);
@@ -39,6 +44,7 @@ public class InvoiceTester
       Product hammer = new Product("Hammer", 19.95);
       Product nails = new Product("Assorted nails", 9.95);
       combo.addItem(hammer);		//Adds Hammer as an choice.
+      combo.addItem(nails); 		//Adds Nails as a choice.
       Bundle bundle = new Bundle();
       bundle.add(hammer);		//Adds Hammer to bundle
       bundle.add(nails);		//Adds nails to bundle
