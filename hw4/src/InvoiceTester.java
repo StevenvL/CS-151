@@ -12,7 +12,7 @@ public class InvoiceTester
    {
       final Invoice invoice = new Invoice();
       final InvoiceFormatter formatter = new SimpleFormatter();
-      final InvoiceFormatter HTMLFormatter = new HTMLFormatter();	//HTMLFormatter to be passed in so that it will print differntly.
+      final InvoiceFormatter HTMLFormatter = new HTMLFormatter();	//HTMLFormatter to be passed in so that it will print differently.
  
       //Just testing some HTML here so it looks pretty.
       String title = "<html><body style='width: 200px; padding: 5px;'>"
