@@ -8,13 +8,25 @@ public class Bundle implements LineItem
    /**
       Constructs a bundle with no items.
    */
-   public Bundle() { items = new ArrayList<>(); }
+   public Bundle() 
+   { 
+	   items = new ArrayList<>(); 
+	   amountOfItems = 1;
+   }
 
    /**
       Adds an item to the bundle.
       @param item the item to add
    */
    public void add(LineItem item) { items.add(item); }
+   
+   public void updateAmountOfItems(int amount) {
+	   amountOfItems = amount;
+   }
+   
+   public int getAmountOfDuplicates() {
+	   return amountOfItems;
+   }
 
    public double getPrice()
    {
@@ -37,4 +49,5 @@ public class Bundle implements LineItem
    }
 
    private ArrayList<LineItem> items;
+   private int amountOfItems;
 }

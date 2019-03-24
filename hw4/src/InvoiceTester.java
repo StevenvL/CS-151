@@ -19,24 +19,25 @@ public class InvoiceTester
       // When the invoice changes, update the text area
       invoice.addChangeListener(event ->
          textArea.setText(invoice.format(formatter)));
+    
 
       // Add line items to a combo box
       final JComboBox combo = new JComboBox();
       Product hammer = new Product("Hammer", 19.95);
       Product nails = new Product("Assorted nails", 9.95);
-      combo.addItem(hammer);
+      combo.addItem(hammer);		//Adds Hammer as an choice.
       Bundle bundle = new Bundle();
-      bundle.add(hammer);
-      bundle.add(nails);
-      combo.addItem(new DiscountedItem(bundle, 10));
+      bundle.add(hammer);		//Adds Hammer to bundle
+      bundle.add(nails);		//Adds nails to bundle
+      combo.addItem(new DiscountedItem(bundle, 10)); 	//Adds the combo as a choice.
 
       // Make a button for adding the currently selected
       // item to the invoice
       JButton addButton = new JButton("Add");
       addButton.addActionListener(event ->
          {
-            LineItem item = (LineItem) combo.getSelectedItem();
-            invoice.addItem(item);
+        	LineItem itemChoosen = (LineItem) combo.getSelectedItem();
+        	invoice.addItem(itemChoosen);
          });
 
       // Put the combo box and the add button into a panel

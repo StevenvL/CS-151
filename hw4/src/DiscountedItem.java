@@ -12,8 +12,17 @@ public class DiscountedItem implements LineItem
    { 
       this.item = item; 
       this.discount = discount;
+      amountOfItems = 1;
    }
 
+   public void updateAmountOfItems() {
+	   amountOfItems++;
+   }
+   
+   public int getAmountOfDuplicates() {
+	   return amountOfItems;
+   }
+   
    public double getPrice() 
    {
       return item.getPrice() * (1 - discount / 100); 
@@ -27,4 +36,5 @@ public class DiscountedItem implements LineItem
 
    private LineItem item;
    private double discount;
+   private int amountOfItems;
 }

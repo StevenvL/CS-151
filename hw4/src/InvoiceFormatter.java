@@ -14,11 +14,13 @@ public interface InvoiceFormatter
       Formats a line item of the invoice.
       @return the formatted line item
    */
-   String formatLineItem(LineItem item);
+   String formatLineItem(LineItem item, int amountOfItems);
 
    /**
       Formats the footer of the invoice.
       @return the invoice footer
    */
    String formatFooter();
+   
+   public void updateTotal(double amount);
 }

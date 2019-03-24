@@ -13,6 +13,8 @@ public class Product implements LineItem
       this.description = description;
       this.price = price;
    }
+   
+   
    public double getPrice() { return price; }
    public String toString() { return description; }
    private String description;

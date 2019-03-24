@@ -64,16 +64,39 @@ public class Invoice
             private int current = 0;
          };
    }
-
+   
+ 
+   public boolean alreadyInList(ArrayList<LineItem> itemsSummedUp, LineItem itemToAdd) {
+	   for(LineItem itemInList : itemsSummedUp) {
+		   if(itemInList.toString().equals(itemToAdd.toString()))
+				   return true;
+	   }
+	   return false;
+   }
+   
    public String format(InvoiceFormatter formatter)
    {
       String r = formatter.formatHeader();
       Iterator<LineItem> iter = getItems();
-      while (iter.hasNext())
-         r += formatter.formatLineItem(iter.next());
+      while (iter.hasNext()) {
+    	 LineItem addMe = iter.next();
+
+    	 if(hMap.containsKey(addMe)) {
+    		 hMap.put(addMe, Collections.frequency(items, addMe));
+    		 formatter.updateTotal(addMe.getPrice());
+    		 System.out.println(hMap.get(addMe));
+    	 }
+    	 else
+    		 hMap.put(addMe, 1);
+
+      }
+      for(LineItem item : hMap.keySet()) {
+    	  r += formatter.formatLineItem(item, hMap.get(item));
+      }
       return r + formatter.formatFooter();
    }
 
    private ArrayList<LineItem> items;
    private ArrayList<ChangeListener> listeners;
+   private HashMap<LineItem, Integer> hMap = new HashMap<>();
 }
