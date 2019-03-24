@@ -76,7 +76,7 @@ public class Invoice
    
    public String format(InvoiceFormatter formatter)
    {
-	  String r = "";
+	  String r = formatter.formatHeader();
 	  double total = 0;
       Iterator<LineItem> iter = getItems();
       while (iter.hasNext()) {

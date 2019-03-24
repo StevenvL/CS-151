@@ -13,26 +13,24 @@ public class InvoiceTester
       final Invoice invoice = new Invoice();
       final InvoiceFormatter formatter = new SimpleFormatter();
       final InvoiceFormatter HTMLFormatter = new HTMLFormatter();
-      JPanel panel = new JPanel();
-      JFrame frame = new JFrame();
-      
-      
-      
+ 
       String title = "<html><body style='width: 200px; padding: 5px;'>"
-              + "<h1>Do U C Me?</h1>"
-              + "Here is a long string that will wrap.  "
-              + "The effect we want is a multi-line label.";
-      JLabel textLabel = new JLabel(title);
-	  Dimension preferredSize = new Dimension(200, 200);
-	  textLabel.setPreferredSize(preferredSize);
-
-      // This text area will contain the formatted invoice
-	  final JTextArea textArea = new JTextArea(20, 40);
-	  // JLabel textArea = new JLabel(20,40);
+              + "<h1>Steven Luu, Homework 4</h1>"
+              + "Here is my basic attempt at HTML";
+      
+      JLabel titleLabel = new JLabel();
+	  Dimension preferredSizeForTitle = new Dimension(200, 100);
+	  titleLabel.setPreferredSize(preferredSizeForTitle);
+	  titleLabel.setText(title);
 	  
+	  JLabel invoiceLabel = new JLabel();
+	  Dimension preferredSize = new Dimension (200,300);
+	  invoiceLabel.setPreferredSize(preferredSize);
+	  
+
       // When the invoice changes, update the text area
       invoice.addChangeListener(event -> {
-    	 textArea.setText(invoice.format(HTMLFormatter));
+    	 invoiceLabel.setText(invoice.format(HTMLFormatter));
       });
     
 
@@ -56,13 +54,14 @@ public class InvoiceTester
          });
 
       // Put the combo box and the add button into a panel
+      JPanel panel = new JPanel();
       panel.add(combo);
       panel.add(addButton);
 
       // Add the text area and panel to the frame
-      frame.add(new JScrollPane(textArea),
-         BorderLayout.CENTER);
-      frame.add(textLabel, BorderLayout.NORTH);
+      JFrame frame = new JFrame();
+      frame.add(titleLabel, BorderLayout.NORTH);
+      frame.add(new JScrollPane(invoiceLabel), BorderLayout.CENTER);
       frame.add(panel, BorderLayout.SOUTH);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();
