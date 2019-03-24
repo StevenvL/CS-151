@@ -12,13 +12,28 @@ public class InvoiceTester
    {
       final Invoice invoice = new Invoice();
       final InvoiceFormatter formatter = new SimpleFormatter();
+      final InvoiceFormatter HTMLFormatter = new HTMLFormatter();
+      JPanel panel = new JPanel();
+      JFrame frame = new JFrame();
+      
+      
+      
+      String title = "<html><body style='width: 200px; padding: 5px;'>"
+              + "<h1>Do U C Me?</h1>"
+              + "Here is a long string that will wrap.  "
+              + "The effect we want is a multi-line label.";
+      JLabel textLabel = new JLabel(title);
+	  Dimension preferredSize = new Dimension(200, 200);
+	  textLabel.setPreferredSize(preferredSize);
 
       // This text area will contain the formatted invoice
-      final JTextArea textArea = new JTextArea(20, 40);
-
+	  final JTextArea textArea = new JTextArea(20, 40);
+	  // JLabel textArea = new JLabel(20,40);
+	  
       // When the invoice changes, update the text area
-      invoice.addChangeListener(event ->
-         textArea.setText(invoice.format(formatter)));
+      invoice.addChangeListener(event -> {
+    	 textArea.setText(invoice.format(HTMLFormatter));
+      });
     
 
       // Add line items to a combo box
@@ -41,14 +56,13 @@ public class InvoiceTester
          });
 
       // Put the combo box and the add button into a panel
-      JPanel panel = new JPanel();
       panel.add(combo);
       panel.add(addButton);
 
       // Add the text area and panel to the frame
-      JFrame frame = new JFrame();
       frame.add(new JScrollPane(textArea),
          BorderLayout.CENTER);
+      frame.add(textLabel, BorderLayout.NORTH);
       frame.add(panel, BorderLayout.SOUTH);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();

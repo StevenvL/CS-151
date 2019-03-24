@@ -76,15 +76,15 @@ public class Invoice
    
    public String format(InvoiceFormatter formatter)
    {
-      String r = formatter.formatHeader();
+	  String r = "";
+	  double total = 0;
       Iterator<LineItem> iter = getItems();
       while (iter.hasNext()) {
     	 LineItem addMe = iter.next();
-
+    	 total = total + addMe.getPrice();
     	 if(hMap.containsKey(addMe)) {
     		 hMap.put(addMe, Collections.frequency(items, addMe));
-    		 formatter.updateTotal(addMe.getPrice());
-    		 System.out.println(hMap.get(addMe));
+    		 //formatter.updateTotal(addMe.getPrice());
     	 }
     	 else
     		 hMap.put(addMe, 1);
@@ -93,8 +93,11 @@ public class Invoice
       for(LineItem item : hMap.keySet()) {
     	  r += formatter.formatLineItem(item, hMap.get(item));
       }
+      formatter.updateTotal(total);
       return r + formatter.formatFooter();
    }
+   
+
 
    private ArrayList<LineItem> items;
    private ArrayList<ChangeListener> listeners;
