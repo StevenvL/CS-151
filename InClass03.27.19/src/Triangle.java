@@ -1,4 +1,4 @@
-public class Triangle {
+public class Triangle extends PrintableTestShape {
     private final double a, b, c; // sides
     
     public Triangle() {

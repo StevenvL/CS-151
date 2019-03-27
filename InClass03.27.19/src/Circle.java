@@ -1,4 +1,4 @@
-public class Circle  {
+public class Circle extends PrintableTestShape  {
     private final double radius;
     final double pi = Math.PI;
     

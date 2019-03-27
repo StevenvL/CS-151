@@ -1,4 +1,4 @@
-public class Rectangle  {
+public class Rectangle extends PrintableTestShape  {
     private final double width, length; //sides
     
     public Rectangle() {
@@ -19,4 +19,15 @@ public class Rectangle  {
         return 2 * (width + length);
     }
     
+    public double getWidth() {
+    	return width;
+    }
+    
+    public double getLength() {
+    	return length;
+    }
+    
+    public String toString() {
+    	return "Rectangle";
+    }
 }
