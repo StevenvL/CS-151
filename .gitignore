@@ -97,3 +97,12 @@ local.properties
 .metadata/.plugins/org.eclipse.core.runtime/.settings/org.python.pydev.prefs
 .metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
 .metadata/version.ini
+.metadata/version.ini
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.python.pydev.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.editors.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/com.genuitec.eclipse.theming.ui.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/com.genuitec.eclipse.monitor.prefs
+.metadata/.plugins/com.genuitec.eclipse.devstyle/recent.json
+.metadata/.log
